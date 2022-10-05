@@ -1,5 +1,5 @@
 using Unity.Entities;
 
-public class EnemyTag : IComponentData
+public struct EnemyTag : IComponentData
 {
 }

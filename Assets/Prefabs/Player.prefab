@@ -74,7 +74,7 @@ MonoBehaviour:
     y: 0
     z: 0
   m_GravityFactor: 0
-  m_OverrideDefaultMassDistribution: 0
+  m_OverrideDefaultMassDistribution: 1
   m_CenterOfMass:
     x: 0
     y: 0
@@ -86,9 +86,9 @@ MonoBehaviour:
       z: 0
     RotationOrder: 4
   m_InertiaTensor:
-    x: 0.4
-    y: 0.4
-    z: 0.4
+    x: 999
+    y: 999
+    z: 999
   m_WorldIndex: 0
   m_CustomTags:
     Tag00: 0

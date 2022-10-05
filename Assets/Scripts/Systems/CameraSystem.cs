@@ -25,8 +25,8 @@ partial class CameraSystem : SystemBase
     protected override void OnUpdate()
     {
         var cameraTransform = CameraSingleton.Instance.transform;
-        var tankTransform = GetComponent<LocalToWorld>(Target);
-        cameraTransform.position = tankTransform.Position - 10.0f * tankTransform.Forward + new float3(0.0f, 5.0f, 0.0f);
-        cameraTransform.LookAt(tankTransform.Position, new float3(0.0f, 1.0f, 0.0f));
+        var targetTransform = GetComponent<LocalToWorld>(Target);
+        cameraTransform.position = targetTransform.Position - 10.0f * targetTransform.Forward + new float3(0.0f, 5.0f, 0.0f);
+        cameraTransform.LookAt(targetTransform.Position, new float3(0.0f, 1.0f, 0.0f));
     }
 }

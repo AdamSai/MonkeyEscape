@@ -15,6 +15,5 @@ public class PlayerBaker : Baker<PlayerAuthoring>
     {
         AddComponent(new MoveComponent { Speed = authoring.speed });
         AddComponent(new PlayerTag());
-        AddComponent(new Position { Value = GetComponent<Transform>().position });
     }
 }
