@@ -54,39 +54,42 @@ namespace Systems
             var ecb = ecbSingleton.CreateCommandBuffer(state.WorldUnmanaged);
             m_ComponentDataHandles.Update(ref state);
     
-            var hp = new HealthSystemJob{ecb = ecb}.Schedule(state.Dependency);
+            new HealthSystemJob{ecb = ecb}.Schedule(state.Dependency);
 
-            var dependency = JobHandle.CombineDependencies(hp, state.Dependency);
             state.Dependency = new SpellTriggerJob
             {
                 EnemyTagData = m_ComponentDataHandles.EnemyTagLookUp,
                 HealthComponentData = m_ComponentDataHandles.HealthComponentLookup
-            }.Schedule(SystemAPI.GetSingleton<SimulationSingleton>(), dependency);
-            
+            }.Schedule(SystemAPI.GetSingleton<SimulationSingleton>(), state.Dependency);
 
         }
     }
 
     [BurstCompile]
-    struct SpellTriggerJob : ITriggerEventsJob
+    public partial struct SpellTriggerJob : ITriggerEventsJob
     {
         [ReadOnly] public ComponentLookup<EnemyTag> EnemyTagData;
         public ComponentLookup<HealthComponent> HealthComponentData;
 
         public void Execute(TriggerEvent collisionEvent)
         {
+            Entity entityA = collisionEvent.EntityA;
             Entity entityB = collisionEvent.EntityB;
 
-            bool isBodyAEnemy = EnemyTagData.HasComponent(entityB);
-            bool hasHealthComponent = HealthComponentData.HasComponent(entityB);
+            bool isBodyAEnemy = EnemyTagData.HasComponent(entityA);
+            bool isBodyBEnemy = EnemyTagData.HasComponent(entityB);
+            bool bodyAHasHealthComponent = HealthComponentData.HasComponent(entityA);
+            bool bodyBHasHealthComponent = HealthComponentData.HasComponent(entityB);
 
-
-            if (isBodyAEnemy && hasHealthComponent)
+            if (isBodyAEnemy && bodyAHasHealthComponent)
             {
-                Debug.Log("Bah");
+                var healthComponent = HealthComponentData.GetRefRW(entityA, false);
+                healthComponent.ValueRW.Value -= 10;
+            }
+            else if (isBodyBEnemy && bodyBHasHealthComponent)
+            {
                 var healthComponent = HealthComponentData.GetRefRW(entityB, false);
                 healthComponent.ValueRW.Value -= 10;
-                Debug.Log("Health: " + healthComponent.ValueRO.Value);
             }
         }
     }

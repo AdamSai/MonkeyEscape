@@ -11,7 +11,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 [BurstCompile]
-public partial struct AbilityTargetsClosestEnemySystem : ISystem, ISystemStartStop
+public partial struct AbilityTargetsRandomEnemySystem : ISystem, ISystemStartStop
 {
     Entity Player;
     LocalToWorld PlayerLTW;
@@ -56,7 +56,7 @@ public partial struct AbilityTargetsClosestEnemySystem : ISystem, ISystemStartSt
             }
             
             PlayerLTW = SystemAPI.GetComponent<LocalToWorld>(Player);
-            new AbilityTargetsClosestEnemyJob
+            new AbilityTargetsRandomEnemyJob
             {
                 PlayerLTW = PlayerLTW,
                 EnemyLTW = EnemyLTW
@@ -65,7 +65,7 @@ public partial struct AbilityTargetsClosestEnemySystem : ISystem, ISystemStartSt
 }
 
 [BurstCompile]
-public partial struct AbilityTargetsClosestEnemyJob : IJobEntity
+public partial struct AbilityTargetsRandomEnemyJob : IJobEntity
 {
     public LocalToWorld PlayerLTW;
     public LocalToWorld EnemyLTW;

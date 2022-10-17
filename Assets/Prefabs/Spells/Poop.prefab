@@ -33,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 5729472061050801370}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6764983240706526965
 MonoBehaviour:
@@ -53,9 +53,9 @@ MonoBehaviour:
     y: -0.11
     z: 0
   m_PrimitiveSize:
-    x: 1.1868427
-    y: 1.1868427
-    z: 1.1868427
+    x: 1.6956865
+    y: 1.6956865
+    z: 1.6956865
   m_PrimitiveOrientation:
     Value:
       x: 0
@@ -63,15 +63,15 @@ MonoBehaviour:
       z: 0
     RotationOrder: 4
   m_Capsule:
-    Height: 1.1868427
-    Radius: 0.59342134
+    Height: 1.6956865
+    Radius: 0.8478432
     Axis: 2
   m_Cylinder:
-    Height: 1.1868427
-    Radius: 0.59342134
+    Height: 1.6956865
+    Radius: 0.8478432
     Axis: 2
   m_CylinderSideCount: 20
-  m_SphereRadius: 0.59342134
+  m_SphereRadius: 0.8478432
   m_MinimumSkinnedVertexWeight: 0.1
   m_ConvexHullGenerationParameters:
     m_SimplificationTolerance: 0.015
