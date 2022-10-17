@@ -34,7 +34,7 @@ public partial class EnemyMoveSystem : SystemBase
         new FollowPlayerJob
         {
             TargetLocalToWorld = TargetLocalToWorld
-        }.ScheduleParallel();
+        }.Schedule();
     }
 }
 

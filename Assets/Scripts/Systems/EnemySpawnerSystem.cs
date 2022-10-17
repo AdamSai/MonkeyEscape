@@ -10,8 +10,6 @@ using UnityEngine;
 [BurstCompile]
 public partial struct EnemySpawnerSystem : ISystem
 {
-
-
     public void OnCreate(ref SystemState state)
     {
     }

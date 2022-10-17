@@ -25,6 +25,6 @@ public partial class PlayerMoveSystem : SystemBase
             in MoveComponent moveComponent, in LocalToWorld ltw) =>
         {
             velocity.Linear = new float3(horizontal, vertical, 0) * moveComponent.Speed;
-        }).WithBurst().ScheduleParallel();
+        }).WithBurst().Run();
     }
 }

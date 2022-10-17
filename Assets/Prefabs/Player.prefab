@@ -86,9 +86,9 @@ MonoBehaviour:
       z: 0
     RotationOrder: 4
   m_InertiaTensor:
-    x: 999
-    y: 999
-    z: 999
+    x: 9999
+    y: 9999
+    z: 9999
   m_WorldIndex: 0
   m_CustomTags:
     Tag00: 0
