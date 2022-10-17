@@ -45,7 +45,11 @@ public partial struct FollowPlayerJob : IJobEntity
     
     public void Execute(in EnemyTag tag, in MoveComponent moveComponent, ref LocalToWorld ltw, ref PhysicsVelocity velocity)
     {
-        velocity.Linear = math.normalize(TargetLocalToWorld.Position - ltw.Position) * moveComponent.Speed;
+        var distance = math.distancesq(TargetLocalToWorld.Position, ltw.Position);
+        if (distance > 5f)
+            velocity.Linear = math.normalize(TargetLocalToWorld.Position - ltw.Position) * moveComponent.Speed;
+        else
+            velocity.Linear = float3.zero;
     }
 }
 

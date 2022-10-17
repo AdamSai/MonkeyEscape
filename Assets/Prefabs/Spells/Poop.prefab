@@ -246,9 +246,12 @@ MonoBehaviour:
   Direction:
     x: 0
     y: 0
+    z: 0
   Position:
     x: 0
     y: 0
+    z: 0
+  TimeToLive: 2
 --- !u!1 &5729472061050801372
 GameObject:
   m_ObjectHideFlags: 0

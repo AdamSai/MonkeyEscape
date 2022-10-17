@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+using Components;
 using Unity.Entities;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerAuthoring : MonoBehaviour
 {
     public float speed;
+    public float health;
 }
 
 public class PlayerBaker : Baker<PlayerAuthoring>
@@ -15,5 +14,6 @@ public class PlayerBaker : Baker<PlayerAuthoring>
     {
         AddComponent(new MoveComponent { Speed = authoring.speed });
         AddComponent(new PlayerTag());
+        AddComponent(new HealthComponent {Value = authoring.health });
     }
 }
